@@ -46,7 +46,7 @@ namespace MeetupAPI
             app.UseRouting();
 
             app.UseAuthorization();
-            app.Use(async (context, next) => { await context.Response.WriteAsync("Hello world"); });
+          //  app.Use(async (context, next) => { await context.Response.WriteAsync("Hello world"); });
 
             app.UseEndpoints(endpoints =>
             {

@@ -23,17 +23,21 @@ namespace MeetupAPI.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpGet("current/{min}")]
+        public IEnumerable<WeatherForecast> Get([FromRoute]int min, [FromQuery] int max)
         {
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
+                TemperatureC = rng.Next(min, 55),
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+        public string Post([FromBody] string text)
+        {
+            return text;
         }
     }
 }
